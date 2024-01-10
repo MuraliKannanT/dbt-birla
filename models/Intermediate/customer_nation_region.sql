@@ -1,10 +1,10 @@
 {{ config(materialized='ephemeral') }}
 
 With customer_nation_region as (
-  SELECT * from snowflake_sample_data.tpch_sf1.customer
-    JOIN snowflake_sample_data.tpch_sf1.nation
+  SELECT * from {{ source('src','customers')}}
+    JOIN {{ source('src','nations')}}
         ON n_nationkey=c_nationkey
-            JOIN snowflake_sample_data.tpch_sf1.region
+            JOIN {{ source('src','regions')}}
                 ON n_regionkey=r_regionkey
 )
 
