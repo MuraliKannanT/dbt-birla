@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: Detailed Information about Customers
+    columns:
+    - name: customer_id
+      description: '{{ doc("primary_key") }}'
+      tests:
+        - unique
+        - not_null
+  - name: stg_orders
+    description: Information about the Orders placed
+    columns:
+    - name: order_id
+      description: '{{ doc("primary_key") }}'
+      tests:
+        - unique
+        - not_null
+  - name: stg_nations
+    description: Information about Nations which the Customers belong to
+    columns:
+    - name: nation_id
+      description: '{{ doc("primary_key") }}'
+      tests:
+        - unique
+        - not_null
+    - name: name
+      description: '{{ doc("test1")}}'
